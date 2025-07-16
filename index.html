@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendeTudoAqui | Avaliação Premium para Móveis e Antiguidades</title>
+    <meta name="description" content="Avaliação especializada e pagamento imediato para seus móveis, eletrônicos e antiguidades. Receba sua oferta em 1h!">
+    
+    <!-- Pré-carregamento -->
+    <link rel="preload" href="imagens/hero-side.webp" as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fontes Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind + Extras -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#2C5545',
+                            50: '#E8F0ED',
+                            100: '#D1E1DA',
+                            200: '#A3C3B5',
+                            300: '#75A590',
+                            400: '#4F806A',
+                            500: '#2C5545',
+                            600: '#234438',
+                            700: '#1B332A',
+                            800: '#12221C',
+                            900: '#09110E',
+                        },
+                        secondary: {
+                            DEFAULT: '#B38B59',
+                            50: '#F5EFE6',
+                            100: '#ECDFCE',
+                            200: '#D9BF9D',
+                            300: '#C69F6C',
+                            400: '#B38B59',
+                            500: '#9C6B3A',
+                            600: '#7D552E',
+                            700: '#5E4023',
+                            800: '#3F2A17',
+                            900: '#1F150C',
+                        },
+                        accent: {
+                            DEFAULT: '#3A606E',
+                            50: '#E8EDEF',
+                            100: '#D1DBDF',
+                            200: '#A3B7BF',
+                            300: '#75939F',
+                            400: '#4F6E7B',
+                            500: '#3A606E',
+                            600: '#2D4B56',
+                            700: '#21363F',
+                            800: '#162227',
+                            900: '#0B1114',
+                        },
+                        light: {
+                            DEFAULT: '#F8F5F0',
+                            50: '#FFFFFF',
+                            100: '#FFFFFF',
+                            200: '#FFFFFF',
+                            300: '#FFFFFF',
+                            400: '#FFFFFF',
+                            500: '#F8F5F0',
+                            600: '#E5DBCD',
+                            700: '#D1C1AA',
+                            800: '#BEA787',
+                            900: '#AA8D64',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'infinite-scroll': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Estilos personalizados */
+        .watermark::before {
+            content: "VTA";
+            position: absolute;
+            font-size: 30vw;
+            font-weight: 800;
+            color: rgba(44, 85, 69, 0.03);
+            z-index: 0;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .texto-destaque {
+            text-shadow: 0 2px 4px rgba(179, 139, 89, 0.3);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #B38B59 0%, #9C6B3A 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(179, 139, 89, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #3A606E 0%, #2C5545 100%);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(44, 85, 69, 0.3);
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(179, 139, 89, 0.4);
+        }
+        
+        .btn-primary::after, .btn-secondary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0.3) 0%,
+                rgba(255,255,255,0) 60%
+            );
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+        
+        .btn-primary:hover::after, .btn-secondary:hover::after {
+            left: 100%;
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 80px;
+        }
+        .wave-divider .shape-fill {
+            fill: #F8F5F0;
+        }
+        
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+        .animate-delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .scroll-mt-20 {
+            scroll-margin-top: 5rem;
+        }
+        
+        /* Estilos do carrossel */
+        .animate-infinite-scroll {
+            display: flex;
+            width: max-content;
+            animation: infinite-scroll 120s linear infinite;
+        }
+        
+        .zoom-img {
+            transition: transform 0.5s ease;
+        }
+        .zoom-img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Dark mode adjustments */
+        @media (prefers-color-scheme: dark) {
+            .text-secondary {
+                color: #d4a762 !important;
+            }
+            body {
+                background-color: #111;
+                color: #eee;
+            }
+            .bg-light {
+                background-color: #222 !important;
+            }
+            .bg-white {
+                background-color: #333 !important;
+            }
+        }
+        
+        /* Tipografia melhorada */
+        h2, h3 {
+            font-weight: 800;
+        }
+        
+        .subtitulo {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+        }
+        
+        .u-italic {
+            font-style: italic;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Botão de voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom-24;
+            right-6;
+            z-index: 40;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(44, 85, 69, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #2C5545;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(44, 85, 69, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-light text-gray-800 font-sans min-h-screen">
+
+    <!-- Preloader Premium -->
+    <div id="preloader" class="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center transition-opacity duration-500">
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="w-24 h-24 mb-6 relative">
+                <div class="absolute inset-0 rounded-full border-4 border-primary border-opacity-25"></div>
+                <div class="absolute inset-4 rounded-full border-4 border-primary border-opacity-50 animate-spin"></div>
+                <div class="absolute inset-8 rounded-full border-4 border-secondary border-opacity-75 animate-spin-slow"></div>
+            </div>
+            <p class="text-lg text-primary font-medium">Carregando experiência premium...</p>
+        </div>
+    </div>
+
+    <!-- WhatsApp flutuante melhorado -->
+    <a href="https://wa.me/5511953567660" 
+       class="whatsapp-float fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl transition-all group"
+       aria-label="Chamar no WhatsApp">
+       <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <!-- Botão de voltar ao topo -->
+    <button id="back-to-top" class="back-to-top fixed bottom-24 right-6 z-40 w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center text-white shadow-md hover:bg-primary-600 transition-all">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Header Premium -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-store text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-serif font-bold text-primary">VendeTudoAqui</span>
+                </a>
+                
+                <nav class="hidden md:flex gap-8 items-center">
+                    <a href="#o-que-compramos" class="text-gray-700 hover:text-primary font-medium transition-colors relative group">
+                        O que compramos
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#como-funciona" class="text-gray-700 hover:text-primary font-medium transition-colors relative group">
+                        Como funciona
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#depoimentos" class="text-gray-700 hover:text-primary font-medium transition-colors relative group">
+                        Depoimentos
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contato" class="bg-primary hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg">
+                        Avaliar agora
+                    </a>
+                </nav>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white w-full absolute left-0 shadow-md">
+            <div class="container mx-auto px-4 py-3 flex flex-col gap-3">
+                <a href="#o-que-compramos" class="text-gray-700 hover:text-primary font-medium py-3 border-b border-gray-100 transition-colors flex items-center gap-2">
+                    <i class="fas fa-couch text-secondary w-5"></i>
+                    O que compramos
+                </a>
+                <a href="#como-funciona" class="text-gray-700 hover:text-primary font-medium py-3 border-b border-gray-100 transition-colors flex items-center gap-2">
+                    <i class="fas fa-search-dollar text-secondary w-5"></i>
+                    Como funciona
+                </a>
+                <a href="#depoimentos" class="text-gray-700 hover:text-primary font-medium py-3 border-b border-gray-100 transition-colors flex items-center gap-2">
+                    <i class="fas fa-star text-secondary w-5"></i>
+                    Depoimentos
+                </a>
+                <a href="#contato" class="bg-primary hover:bg-primary-700 text-white px-4 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg mt-2 flex items-center justify-center gap-2">
+                    <i class="fas fa-bolt"></i>
+                    Avaliar agora
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Premium -->
+    <section class="relative overflow-hidden watermark">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary to-primary-800 opacity-95"></div>
+        
+        <!-- Imagem decorativa na primeira dobra -->
+        <div class="absolute right-0 top-0 h-full w-1/3 hidden xl:block">
+            <img src="imagens/hero-side.webp" alt="Móveis premium" class="h-full w-full object-cover opacity-90" loading="lazy">
+        </div>
+        
+        <div class="container mx-auto px-4 py-32 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 leading-tight animate-fade-in">
+                    <span class="text-secondary texto-destaque">Valorize</span> seus móveis e antiguidades<br>
+                    com avaliação <span class="u-italic">especializada</span>
+                </h1>
+                
+                <p class="text-xl text-light-300 mb-10 max-w-2xl mx-auto animate-fade-in animate-delay-1 subtitulo">
+                    Receba uma oferta justa em até <strong class="text-secondary">1 hora</strong> e pagamento <strong class="text-secondary">imediato</strong> na retirada
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16 animate-fade-in animate-delay-2">
+                    <a href="https://wa.me/5511953567660" 
+                       class="btn-primary text-white font-bold px-8 py-4 rounded-lg text-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-bolt text-xl"></i>
+                        VENDER AGORA
+                    </a>
+                    
+                    <a href="#como-funciona" 
+                       class="btn-secondary text-white font-bold px-8 py-4 rounded-lg text-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-search-dollar"></i>
+                        AVALIAÇÃO IMEDIATA
+                    </a>
+                </div>
+                
+                <!-- Selo de confiança premium -->
+                <div class="inline-flex items-center bg-white bg-opacity-10 backdrop-blur-sm rounded-full px-6 py-3 gap-3 border border-secondary border-opacity-30 animate-fade-in animate-delay-3">
+                    <div class="flex text-secondary">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="text-white text-sm">
+                        <p class="font-bold">+7.500 itens avaliados</p>
+                        <p class="text-light-300 text-xs">Excelência em atendimento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Divisor de onda premium -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#F8F5F0"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#F8F5F0"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#F8F5F0"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Seção Nossas Aquisições -->
+    <section id="galeria" class="py-16 bg-light scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block text-secondary font-bold mb-3 animate-fade-in">NOSSAS AQUISIÇÕES</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4 animate-fade-in">Itens que transformamos</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto animate-fade-in subtitulo">De móveis antigos a peças de colecionador, tudo pode ter valor</p>
+            </div>
+            
+            <div class="relative overflow-hidden">
+                <div id="carrossel-container" class="flex gap-8 py-4">
+                    <!-- ITEM 1 -->
+                    <div class="carrossel-item flex-shrink-0 w-72 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="./imagens/moveis.webp" alt="Móveis de Luxo" class="w-full h-full object-cover zoom-img" loading="lazy">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                                <span class="text-white font-bold">Móveis Clássicos</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-lg mb-2">Móveis de Alto Padrão</h3>
+                            <p class="text-gray-600 mb-3">Peças exclusivas com valor histórico e artístico</p>
+                            <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full">Valorização 100%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- ITEM 2 -->
+                    <div class="carrossel-item flex-shrink-0 w-72 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="./imagens/decorativos.webp" alt="Peças Decorativas" class="w-full h-full object-cover zoom-img" loading="lazy">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                              <span class="text-white font-bold">Decoração</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-lg mb-2">Peças Decorativas</h3>
+                            <p class="text-gray-600 mb-3">Objetos de arte e decoração exclusivos</p>
+                            <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full">Valor emocional</span>
+                        </div>
+                    </div>
+                    
+                    <!-- ITEM 3 -->
+                    <div class="carrossel-item flex-shrink-0 w-72 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="./imagens/eletrodomesticos.webp" alt="Eletrodomésticos Premium" class="w-full h-full object-cover zoom-img" loading="lazy">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                                <span class="text-white font-bold">Eletrodomésticos</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-lg mb-2">Eletrodomésticos Premium</h3>
+                            <p class="text-gray-600 mb-3">Marcas de luxo em perfeito estado</p>
+                            <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full">Alta procura</span>
+                        </div>
+                    </div>
+                    
+                    <!-- ITEM 4 -->
+                    <div class="carrossel-item flex-shrink-0 w-72 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all card-hover">
+                        <div class="h-64 overflow-hidden relative">
+                            <img src="./imagens/pratarias.webp" alt="Pratarias Finas" class="w-full h-full object-cover zoom-img" loading="lazy">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                                <span class="text-white font-bold">Prataria</span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-semibold text-lg mb-2">Pratarias e Cristais</h3>
+                            <p class="text-gray-600 mb-3">Conjuntos completos e peças raras</p>
+                            <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full">Peças colecionáveis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 animate-fade-in">
+                <a href="#contato" class="inline-flex items-center text-primary font-bold hover:text-primary-700 transition-colors group">
+                    Veja mais itens que compramos
+                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção O Que Compramos -->
+    <section id="o-que-compramos" class="py-16 bg-white scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block text-secondary font-bold mb-3 animate-fade-in">NOSSOS SERVIÇOS</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4 animate-fade-in">O que compramos?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto animate-fade-in subtitulo">Diversas categorias de itens com avaliação especializada</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-secondary-200 shadow-sm hover:shadow-md transition-all card-hover animate-fade-in">
+                    <div class="text-secondary mb-5 text-5xl flex justify-center">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-semibold mb-3 text-center">Móveis Usados</h3>
+                    <p class="text-gray-600 mb-4 text-center subtitulo">De sofás clássicos a conjuntos completos, avaliamos peças de todos os estilos e épocas.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Sofás e poltronas de qualidade</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Conjuntos de dormitório completos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Móveis rústicos e vintage</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-secondary-200 shadow-sm hover:shadow-md transition-all card-hover animate-fade-in animate-delay-1">
+                    <div class="text-secondary mb-5 text-5xl flex justify-center">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-semibold mb-3 text-center">Antiguidades</h3>
+                    <p class="text-gray-600 mb-4 text-center subtitulo">Peças com história e valor sentimental que merecem ser preservadas e valorizadas.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Móveis antigos (mais de 50 anos)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Objetos de colecionador</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Peças de época bem conservadas</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-secondary-200 shadow-sm hover:shadow-md transition-all card-hover animate-fade-in animate-delay-2">
+                    <div class="text-secondary mb-5 text-5xl flex justify-center">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-semibold mb-3 text-center">Eletrônicos</h3>
+                    <p class="text-gray-600 mb-4 text-center subtitulo">Tecnologia em perfeito estado, desde aparelhos modernos até vintage funcionais.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Televisores e sistemas de som</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Eletrodomésticos premium</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                            <span>Aparelhos vintage colecionáveis</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in">
+                <a href="#contato" class="btn-primary text-white font-bold px-8 py-3 rounded-lg text-lg inline-flex items-center gap-2">
+                    <i class="fas fa-comment-dollar"></i>
+                    CONSULTE OUTROS ITENS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Quem Somos -->
+    <section id="quem-somos" class="py-16 bg-light scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2 animate-fade-in">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df" alt="Equipe VendeTudoAqui" class="w-full h-auto" loading="lazy">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+                            <h3 class="text-white font-serif font-bold text-xl">Especialistas em avaliação desde 2010</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 animate-fade-in animate-delay-1">
+                    <span class="inline-block text-secondary font-bold mb-3">QUEM SOMOS</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-6">Mais que compradores, somos especialistas</h2>
+                    <p class="text-lg text-gray-700 mb-6 subtitulo">Na VendeTudoAqui, combinamos <strong class="text-primary">conhecimento técnico</strong> com <strong class="text-primary">transparência</strong> para oferecer a melhor avaliação do mercado para seus itens.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-secondary text-3xl mb-2 font-serif font-bold">10+</div>
+                            <div class="text-gray-600">Anos no mercado</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-secondary text-3xl mb-2 font-serif font-bold">7.5k+</div>
+                            <div class="text-gray-600">Itens avaliados</div>
+                        </div>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-secondary-100 text-secondary flex items-center justify-center">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-700">Equipe de avaliadores certificados</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-secondary-100 text-secondary flex items-center justify-center">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-700">Pagamento na retirada sem complicações</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-8 h-8 rounded-full bg-secondary-100 text-secondary flex items-center justify-center">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                            <span class="ml-3 text-gray-700">Atendimento personalizado 24/7</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#contato" class="inline-flex items-center text-primary font-bold hover:text-primary-700 transition-colors group">
+                        Converse com nosso time de especialistas
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Como Funciona -->
+    <section id="como-funciona" class="py-16 bg-white scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block text-secondary font-bold mb-3 animate-fade-in">PROCESSO SIMPLES</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4 animate-fade-in">Como funciona?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto animate-fade-in subtitulo">Um caminho rápido e transparente para vender seus itens</p>
+            </div>
+            
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Linha do tempo decorativa -->
+                <div class="hidden md:block absolute left-1/2 top-0 h-full w-0.5 bg-gray-200 transform -translate-x-1/2"></div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Passo 1 -->
+                    <div class="relative animate-fade-in">
+                        <div class="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold font-serif z-10 mx-auto mb-4 md:mb-0">
+                            1
+                        </div>
+                        <div class="bg-light p-8 rounded-xl shadow-sm h-full md:mt-8">
+                            <div class="text-secondary text-4xl mb-4">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-semibold mb-3">Envio das Informações</h3>
+                            <p class="text-gray-600 subtitulo">Envie fotos e detalhes pelo WhatsApp ou formulário. Quanto mais informações, mais precisa será nossa avaliação.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Passo 2 -->
+                    <div class="relative animate-fade-in animate-delay-1">
+                        <div class="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold font-serif z-10 mx-auto mb-4 md:mb-0">
+                            2
+                        </div>
+                        <div class="bg-light p-8 rounded-xl shadow-sm h-full md:mt-8">
+                            <div class="text-secondary text-4xl mb-4">
+                                <i class="fas fa-search-dollar"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-semibold mb-3">Avaliação Especializada</h3>
+                            <p class="text-gray-600 subtitulo">Nossos especialistas analisam seu item e enviam uma proposta justa em até 1 hora (em horário comercial).</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Passo 3 -->
+                    <div class="relative animate-fade-in animate-delay-2">
+                        <div class="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 w-16 h-16 bg-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold font-serif z-10 mx-auto mb-4 md:mb-0">
+                            3
+                        </div>
+                        <div class="bg-light p-8 rounded-xl shadow-sm h-full md:mt-8">
+                            <div class="text-secondary text-4xl mb-4">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <h3 class="text-xl font-serif font-semibold mb-3">Retirada e Pagamento</h3>
+                            <p class="text-gray-600 subtitulo">Agendamos a retirada gratuita e você recebe na hora, no formato que preferir (PIX, transferência ou dinheiro).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in">
+                <a href="https://wa.me/5511953567660" class="btn-primary text-white font-bold px-8 py-3 rounded-lg text-lg inline-flex items-center gap-2">
+                    <i class="fab fa-whatsapp"></i>
+                    INICIAR AVALIAÇÃO AGORA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Depoimentos -->
+    <section id="depoimentos" class="py-16 bg-light scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block text-secondary font-bold mb-3 animate-fade-in">CONFIANÇA</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4 animate-fade-in">O que dizem nossos clientes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto animate-fade-in subtitulo">Avaliações reais de quem já vendeu conosco</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover animate-fade-in">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente Maria" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold">Maria F.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Vendi meu sofá antigo e recebi uma oferta 30% acima do que outros avaliadores propuseram. Profissionais extremamente honestos e transparentes!"</p>
+                    <div class="text-xs text-gray-400">Avaliado em 15/03/2024</div>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover animate-fade-in animate-delay-1">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente Roberto" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold">Roberto C.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Precisava esvaziar a casa dos meus pais e eles compraram tudo: móveis, eletrodomésticos e até peças quebradas. Pagamento na hora e serviço impecável!"</p>
+                    <div class="text-xs text-gray-400">Avaliado em 02/03/2024</div>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm card-hover animate-fade-in animate-delay-2">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente Ana" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-semibold">Ana L.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Meu buffet antigo estava guardado há anos. Eles identificaram que era uma peça rara e me pagaram 5x mais do que eu esperava. Recomendo demais!"</p>
+                    <div class="text-xs text-gray-400">Avaliado em 22/02/2024</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 animate-fade-in">
+                <a href="#" class="inline-flex items-center text-primary font-bold hover:text-primary-700 transition-colors group">
+                    Ver mais depoimentos
+                    <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção FAQ -->
+    <section class="py-16 bg-white scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="inline-block text-secondary font-bold mb-3 animate-fade-in">DÚVIDAS FREQUENTES</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4 animate-fade-in">Perguntas frequentes</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto animate-fade-in subtitulo">Tire suas dúvidas sobre nosso processo de avaliação</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- Pergunta 1 -->
+                <div class="bg-light rounded-lg overflow-hidden animate-fade-in">
+                    <button onclick="toggleFAQ(1)" class="flex justify-between items-center w-full text-left font-semibold text-lg p-6 hover:bg-light-600 transition-colors">
+                        <span>Vocês avaliam itens quebrados ou danificados?</span>
+                        <i class="fas fa-chevron-down text-secondary transition-transform" id="faq-icon-1"></i>
+                    </button>
+                    <div id="faq-answer-1" class="hidden px-6 pb-6 pt-0 text-gray-700 border-t border-light-500">
+                        Sim, avaliamos itens com danos, mas o valor será ajustado conforme o estado. Peças raras ou de coleção podem manter valor mesmo com defeitos. Envie fotos detalhadas para uma avaliação precisa.
+                    </div>
+                </div>
+                
+                <!-- Pergunta 2 -->
+                <div class="bg-light rounded-lg overflow-hidden animate-fade-in animate-delay-1">
+                    <button onclick="toggleFAQ(2)" class="flex justify-between items-center w-full text-left font-semibold text-lg p-6 hover:bg-light-600 transition-colors">
+                        <span>Quanto tempo leva para receber a oferta?</span>
+                        <i class="fas fa-chevron-down text-secondary transition-transform" id="faq-icon-2"></i>
+                    </button>
+                    <div id="faq-answer-2" class="hidden px-6 pb-6 pt-0 text-gray-700 border-t border-light-500">
+                        Em dias úteis, respondemos em até 1 hora após receber todas as informações. Para itens muito específicos ou fora do horário comercial, pode levar até 24 horas.
+                    </div>
+                </div>
+                
+                <!-- Pergunta 3 -->
+                <div class="bg-light rounded-lg overflow-hidden animate-fade-in animate-delay-2">
+                    <button onclick="toggleFAQ(3)" class="flex justify-between items-center w-full text-left font-semibold text-lg p-6 hover:bg-light-600 transition-colors">
+                        <span>Como é feito o pagamento?</span>
+                        <i class="fas fa-chevron-down text-secondary transition-transform" id="faq-icon-3"></i>
+                    </button>
+                    <div id="faq-answer-3" class="hidden px-6 pb-6 pt-0 text-gray-700 border-t border-light-500">
+                        O pagamento é feito no ato da retirada, na forma que você preferir: PIX (instantâneo), transferência bancária (confirmada na hora) ou dinheiro físico. Não cobramos taxas adicionais.
+                    </div>
+                </div>
+                
+                <!-- Pergunta 4 -->
+                <div class="bg-light rounded-lg overflow-hidden animate-fade-in">
+                    <button onclick="toggleFAQ(4)" class="flex justify-between items-center w-full text-left font-semibold text-lg p-6 hover:bg-light-600 transition-colors">
+                        <span>Quais regiões vocês atendem?</span>
+                        <i class="fas fa-chevron-down text-secondary transition-transform" id="faq-icon-4"></i>
+                    </button>
+                    <div id="faq-answer-4" class="hidden px-6 pb-6 pt-0 text-gray-700 border-t border-light-500">
+                        Atendemos toda a Grande São Paulo com retirada gratuita. Para outras regiões, podemos avaliar remotamente e indicar transportadores parceiros com preços especiais.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção CTA Final -->
+    <section id="contato" class="py-16 bg-primary text-white scroll-mt-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 animate-fade-in">Pronto para vender seus itens?</h2>
+                <p class="text-xl text-light-300 mb-8 max-w-2xl mx-auto animate-fade-in subtitulo">Receba uma oferta justa em até 1 hora e pagamento imediato</p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12 animate-fade-in">
+                    <a href="https://wa.me/5511953567660" 
+                       class="btn-primary text-white font-bold px-8 py-4 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        CHAMAR NO WHATSAPP
+                    </a>
+                    
+                    <a href="tel:+5511953567660" 
+                       class="btn-secondary text-white font-bold px-8 py-4 rounded-lg text-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fas fa-phone-alt"></i>
+                        LIGAR AGORA
+                    </a>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden animate-fade-in animate-delay-1">
+                <div class="grid md:grid-cols-2">
+                    <div class="bg-primary-800 p-8 text-white hidden md:block">
+                        <h3 class="font-serif font-bold text-2xl mb-4">Entre em contato</h3>
+                        <p class="mb-6">Nosso time de especialistas está pronto para avaliar seus itens com transparência e agilidade.</p>
+                        
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-3 text-secondary"></i>
+                                <div>
+                                    <h4 class="font-bold">Telefone</h4>
+                                    <p>(11) 95356-7660</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-3 text-secondary"></i>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p>contato@vendetudoaqui.com.br</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-3 text-secondary"></i>
+                                <div>
+                                    <h4 class="font-bold">Atendimento</h4>
+                                    <p>Grande São Paulo - Plantão 24h</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-8 text-gray-800">
+                        <h3 class="font-serif font-bold text-2xl mb-6">Formulário de contato</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-1">Seu nome*</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" required>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium mb-1">Telefone*</label>
+                                <input type="tel" id="phone" placeholder="(11) 95356-7660" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" required pattern="^\(\d{2}\) \d{4,5}-\d{4}$">
+                            </div>
+                            
+                            <div>
+                                <label for="items" class="block text-sm font-medium mb-1">Itens para vender*</label>
+                                <textarea id="items" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-secondary hover:bg-secondary-700 text-white font-bold py-3 rounded-lg transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                                <i class="fas fa-paper-plane"></i>
+                                ENVIAR PARA AVALIAÇÃO
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Premium -->
+    <footer class="bg-primary-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-primary-900">
+                            <i class="fas fa-store text-lg"></i>
+                        </div>
+                        <span class="text-xl font-serif font-bold">VendeTudoAqui</span>
+                    </div>
+                    <p class="text-light-300 mb-4">Avaliação especializada e pagamento justo para seus itens usados.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-light-300 hover:text-secondary transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-light-300 hover:text-secondary transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-light-300 hover:text-secondary transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-serif font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#o-que-compramos" class="text-light-300 hover:text-secondary transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-right text-xs text-secondary"></i>
+                                O que compramos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#como-funciona" class="text-light-300 hover:text-secondary transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-right text-xs text-secondary"></i>
+                                Como funciona
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#depoimentos" class="text-light-300 hover:text-secondary transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-right text-xs text-secondary"></i>
+                                Depoimentos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contato" class="text-light-300 hover:text-secondary transition-colors flex items-center gap-2">
+                                <i class="fas fa-chevron-right text-xs text-secondary"></i>
+                                Contato
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-serif font-bold mb-4">Horário</h4>
+                    <ul class="space-y-2 text-light-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-2 text-secondary"></i>
+                            <span>Seg-Sex: 8h às 18h</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-clock mt-1 mr-2 text-secondary"></i>
+                            <span>Sábado: 9h às 13h</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2 text-secondary"></i>
+                            <span>Plantão 24h</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-serif font-bold mb-4">Contato</h4>
+                    <ul class="space-y-2 text-light-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2 text-secondary"></i>
+                            <span>(11) 95356-7660</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2 text-secondary"></i>
+                            <span>contato@vendetudoaqui.com.br</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-secondary"></i>
+                            <span>São Paulo - SP</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-light-300 text-sm mb-4 md:mb-0">&copy; 2024 VendeTudoAqui. Todos os direitos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-light-300 hover:text-secondary text-sm transition-colors">Política de Privacidade</a>
+                    <a href="#" class="text-light-300 hover:text-secondary text-sm transition-colors">Termos de Serviço</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts Otimizados -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script>
+        // Menu Mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuButton.innerHTML = mobileMenu.classList.contains('active') 
+                ? '<i class="fas fa-times text-xl"></i>' 
+                : '<i class="fas fa-bars text-xl"></i>';
+        });
+
+        // FAQ
+        function toggleFAQ(id) {
+            const answer = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+        
+        // Carrossel Infinito
+        function setupCarrossel() {
+            const container = document.getElementById('carrossel-container');
+            if (!container) return;
+            
+            const items = document.querySelectorAll('.carrossel-item');
+            const clonesNeeded = Math.ceil(window.innerWidth / 300) * 2;
+            
+            for (let i = 0; i < clonesNeeded; i++) {
+                items.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    container.appendChild(clone);
+                });
+            }
+
+            // Otimização para mobile
+            if (window.innerWidth < 768) {
+                container.style.animationDuration = '70s';
+            }
+
+            container.classList.add('animate-infinite-scroll');
+
+            container.addEventListener('mouseenter', () => {
+                container.style.animationPlayState = 'paused';
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                container.style.animationPlayState = 'running';
+            });
+        }
+
+        // Formulário
+        document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const phone = form.querySelector('input[type="tel"]').value;
+            
+            if (!/^\(\d{2}\) \d{4,5}-\d{4}$/.test(phone)) {
+                alert('Por favor, insira um telefone válido no formato (11) 95356-7660');
+                return;
+            }
+            
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ENVIANDO...';
+            submitBtn.disabled = true;
+            
+            // Simulação de envio
+            setTimeout(() => {
+                alert('Formulário enviado com sucesso! Entraremos em contato em até 1 hora.');
+                form.reset();
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> ENVIAR PARA AVALIAÇÃO';
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Tooltip WhatsApp
+        tippy('.whatsapp-float', {
+            content: 'Fale conosco agora',
+            placement: 'left',
+            animation: 'fade'
+        });
+
+        // Botão de voltar ao topo
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 200) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+                
+                // Inicializa carrossel após carregamento
+                setupCarrossel();
+                
+                // Anima elementos ao scroll
+                const animateOnScroll = function() {
+                    const elements = document.querySelectorAll('.animate-on-scroll');
+                    elements.forEach(el => {
+                        const elementPosition = el.getBoundingClientRect().top;
+                        const screenPosition = window.innerHeight / 1.2;
+                        
+                        if(elementPosition < screenPosition) {
+                            el.classList.add('animate-fade-in');
+                        }
+                    });
+                };
+
+                window.addEventListener('scroll', animateOnScroll);
+                animateOnScroll(); // Executa uma vez ao carregar
+            }, 800);
+        });
+    </script>
+</body>
+</html>
